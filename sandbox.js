@@ -11,7 +11,7 @@ var app = Express();
 var database;
 var collection;
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT/*3000*/, () => {
   MongoClient.connect(uri, { useNewUrlParser: true }, (error, client) => {
       if(error) {
           throw error;
