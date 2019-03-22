@@ -60,16 +60,16 @@ app.get("/movies/:id", (request, response) => {
   });
 });
 app.get("/movies/search", (request, response) => {
-  var limit = (request.query.limit === undefined ? 5 : parseInt(request.query.limit));
-  var metascore = (request.query.metascore === undefined ? 0 : parseInt(request.query.metascore));
-  collection.find({"metascore": {$gte: metascore}}).limit(limit).toArray((error, result) => {
-      if(error) {
-          return response.status(500).send(error);
-      }
-      response.send(result);
-  });
-});
+    var limit = (request.query.limit === undefined ? 5 : parseInt(request.query.limit));
+    var metascore = (request.query.metascore === undefined ? 0 : parseInt(request.query.metascore));
 
+    collection.find({"metascore": {$gte: metascore}}).limit(limit).toArray((error, result) => {
+        if(error) {
+            return response.status(500).send(error);
+        }
+        response.send(result);
+    });
+});
 //curl -X POST -H "Content-Type: application/json" http://localhost:3000/movies/5c868533e72b629f0433421c
 app.post("/movies/:id", (request, response) => {
   if(request.body.review === undefined || request.body.date === undefined) {
