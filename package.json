@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "The must-watch Denzel's movies",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.4",
     "heroku": "^7.22.7",
