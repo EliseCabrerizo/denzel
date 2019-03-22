@@ -20,10 +20,15 @@ app.listen(process.env.PORT/*3000*/, () => {
       collection = database.collection("Films");
       console.log("Connected to DenzelFilm/Films !");
   });
+        if(error) {
+            throw error;
+        }
+        database = client.db("DenzelFilm");
+        collection = database.collection("Films");
+        console.log("Connected to DenzelFilm/Films !");
+   });
 });
-
 app.get('/', (req, res) => {
-
   res.writeHead(200, { 'Content-Type': 'text/html' });
   res.write('<h1>Hello from Denzel API !</h1>');
   res.end();
@@ -49,7 +54,6 @@ app.get("/movies", (request, response) => {
           return response.status(500).send(error);
       }
       response.send(result[Math.floor(Math.random()*result.length)]);
-  });
 });
 app.get("/movies/:id", (request, response) => {
   collection.findOne({ "id": (request.params.id) }, (error, result) => {
